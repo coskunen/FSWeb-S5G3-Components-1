@@ -115,3 +115,46 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+const articlesContanier = document.getElementsByClassName("articles")[0];
+l/* et newObj = { baslik : "tttttTTTT",
+        ilkParagraf:"YYYYYYYYYYYYY" ,
+        ikinciParagraf : "lorem" ,
+        ucuncuParagraf : 'dddddddddd'
+
+}
+data.push(newObj); */
+function haberYapici(paramHaber) {
+  const hDiv = document.createElement("div");
+  const hTitle = document.createElement("h2");
+  const hDate = document.createElement("p");
+  const hPar1 = document.createElement("p");
+  const hPar2 = document.createElement("p");
+  const hPar3 = document.createElement("p");
+  const hBtn = document.createElement("span");
+  
+  articlesContanier.appendChild(hDiv);
+  hDiv.append(hTitle , hDate , hPar1 , hPar2 , hPar3, hBtn);
+  
+  hDiv.classList.add('article');
+  //hTitle.classList.add("");
+  hDate.classList.add('tarih');
+  hBtn.classList.add('expandButton');
+hTitle.textContent = paramHaber.baslik;
+hPar1 .textContent = paramHaber.ilkParagraf;
+hPar2 .textContent = paramHaber.ikinciParagraf;
+hPar3 .textContent = paramHaber.ucuncuParagraf;
+hBtn.textContent = " + "
+
+hBtn.addEventListener("click", (e) =>{
+  hDiv.classList.toggle("article-open");
+})
+
+  return hDiv;
+}
+
+data.forEach(item =>{
+  articlesContanier.appendChild(haberYapici(item));
+})
+
+
